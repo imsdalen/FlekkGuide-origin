@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B5D2675D2F68469C00A5ED25 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B5D2675C2F68469900A5ED25 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B5D267162F68337200A5ED25 /* FlekkGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlekkGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D2675C2F68469900A5ED25 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		B5D2670D2F68337200A5ED25 = {
 			isa = PBXGroup;
 			children = (
+				B5D2675C2F68469900A5ED25 /* .gitignore */,
 				B5D267182F68337200A5ED25 /* FlekkGuide */,
 				B5D267172F68337200A5ED25 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D2675D2F68469C00A5ED25 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
