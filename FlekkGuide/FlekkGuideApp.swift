@@ -19,7 +19,7 @@ struct FlekkGuideApp: App {
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Hei på dei: \(error)")
+            fatalError("Hei på dei din gamle sjokolade: \(error)")
         }
     }()
 
