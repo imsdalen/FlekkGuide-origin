@@ -2,8 +2,6 @@
 //  Item.swift
 //  FlekkGuide
 //
-//  Created by Ingrid Skoge on 16/03/2026.
-//
 
 import Foundation
 import SwiftData

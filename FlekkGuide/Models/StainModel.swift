@@ -2,17 +2,17 @@
 //  StainModel.swift
 //  FlekkGuide
 //
-//  Created by Ingrid Skoge on 22/04/2026.
-//
 
-import SwiftUI
+import Foundation
+import SwiftData
 
-struct StainModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    StainModel()
+@Model
+final class Stain {
+  var id: UUID
+  var name: String
+  
+  init(name: String) {
+    self.id = UUID()
+    self.name = name
+  }
 }

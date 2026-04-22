@@ -2,17 +2,24 @@
 //  GuideModel.swift
 //  FlekkGuide
 //
-//  Created by Ingrid Skoge on 22/04/2026.
-//
 
-import SwiftUI
+import Foundation
+import SwiftData
 
-struct GuideModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    GuideModel()
+@Model
+final class Guide {
+  var id: UUID
+  var isFurnitureTip: Bool
+  var instructions: String
+  
+  var stain: Stain
+  var fabric: Fabric
+  
+  init(stain: Stain, fabric: Fabric, isFurnitureTip: Bool, instructions: String) {
+    self.id = UUID()
+    self.stain = stain
+    self.fabric = fabric
+    self.isFurnitureTip = isFurnitureTip
+    self.instructions = instructions
+  }
 }

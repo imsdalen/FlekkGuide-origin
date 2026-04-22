@@ -2,17 +2,19 @@
 //  FabricModel.swift
 //  FlekkGuide
 //
-//  Created by Ingrid Skoge on 22/04/2026.
-//
 
-import SwiftUI
+import Foundation
+import SwiftData
 
-struct FabricModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    FabricModel()
+@Model
+final class Fabric {
+  var id: UUID
+  var name: String
+  var isFurnitureFabric: Bool
+  
+  init(name: String, isFurnitureFabric: Bool) {
+    self.id = UUID()
+    self.name = name
+    self.isFurnitureFabric = isFurnitureFabric
+  }
 }
