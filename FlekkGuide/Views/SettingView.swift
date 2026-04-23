@@ -2,8 +2,6 @@
 //  SettingView.swift
 //  FlekkGuide
 //
-//  Created by Ingrid Skoge on 23/04/2026.
-//
 
 import SwiftUI
 
