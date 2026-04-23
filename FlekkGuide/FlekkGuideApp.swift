@@ -9,6 +9,8 @@ import SwiftData
 @main
 struct FlekkGuideApp: App {
   
+  //@AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+  
   let container: ModelContainer
   
   init() {
@@ -30,7 +32,12 @@ struct FlekkGuideApp: App {
   
     var body: some Scene {
         WindowGroup {
-          ContentView().modelContainer(container)
+          HomeView()
+          /*if hasSeenOnboarding {
+            HomeView()
+          } else {
+            OnboardingView()
+          }*/
         }
     }
 }
