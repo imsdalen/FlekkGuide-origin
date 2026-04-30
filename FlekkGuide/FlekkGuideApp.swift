@@ -20,11 +20,18 @@ struct FlekkGuideApp: App {
       container = try ModelContainer(for: Fabric.self, Stain.self, Guide.self, WashingGuide.self, configurations: config)
       
       let context = container.mainContext
+      
+      let fabricCount = try context.fetchCount(FetchDescriptor<Fabric>())
       let stainCount = try context.fetchCount(FetchDescriptor<Stain>())
+      let guideCount = try context.fetchCount(FetchDescriptor<Guide>())
       let washingCount = try context.fetchCount(FetchDescriptor<WashingGuide>())
-
-      if stainCount == 0 || washingCount == 0 {
-          startData(context: context)
+      
+      if fabricCount == 0 || stainCount == 0 || guideCount == 0 || washingCount == 0 {
+        try context.delete(model: Fabric.self)
+        try context.delete(model: Stain.self)
+        try context.delete(model: Guide.self)
+        try context.delete(model: WashingGuide.self)
+        startData(context: context)
       }
     }
     catch {

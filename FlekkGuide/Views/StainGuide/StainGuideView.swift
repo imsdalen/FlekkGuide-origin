@@ -55,7 +55,7 @@ struct StainGuideView: View {
           
           
           LazyVGrid(columns: columns, spacing: 16) {
-            ForEach(stains) { stain in
+            ForEach(filtered) { stain in
               NavigationLink(destination: StainQuestionView(stain: stain)) {
                 StainCardView(stain: stain)
               }
