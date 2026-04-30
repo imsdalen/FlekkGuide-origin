@@ -1,16 +1,33 @@
-//
-//  WashingDetailView.swift
-//  FlekkGuide
-//
-
 import SwiftUI
 
 struct WashingDetailView: View {
+    
+    let guide: WashingGuide
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                
+                Text(guide.title)
+                    .font(.largeTitle)
+                    .bold()
+                
+                ForEach(guide.tips, id: \.self) { tip in
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Tips")
+                            .font(.headline)
+                        
+                        Text(tip)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Divider()
+                }
+            }
+            .padding()
+        }
+        .navigationTitle(guide.title)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-#Preview {
-    WashingDetailView()
-}

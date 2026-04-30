@@ -36,4 +36,44 @@ func startData(context: ModelContext) {
       }
     }
   }
+  
+  let bathroom = WashingGuide(
+    title: "Bad",
+    tips: [
+        "Bruk eddik for å fjerne kalk",
+        "Vask speil med mikrofiberklut",
+        "Rengjør toalett ukentlig"
+    ]
+  )
+  
+  let kitchen = WashingGuide(
+    title: "Kjøkken",
+    tips: [
+        "Tørk benkeplater daglig!!",
+        "Rens ovnen jevnlig",
+        "Vask kjøleskap hver uke"
+    ]
+  )
+  
+  let bedroom = WashingGuide(
+    title: "Soverom",
+    tips: [
+        "Bytt på sengen",
+        "Luft dynetrekk"
+    ]
+  )
+  
+  let livingroom = WashingGuide(
+    title: "Stue",
+    tips: [
+        "Bytt på sengen",
+        "Luft dynetrekk"
+    ]
+  )
+
+  context.insert(bathroom)
+  context.insert(kitchen)
+  context.insert(bedroom)
+  context.insert(livingroom)
 }
+
