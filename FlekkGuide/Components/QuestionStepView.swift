@@ -3,6 +3,10 @@
 //  FlekkGuide
 //
 
+
+
+// slette?
+
 import SwiftUI
 
 struct QuestionStepView: View {
