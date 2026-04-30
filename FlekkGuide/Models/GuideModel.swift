@@ -21,5 +21,11 @@ final class Guide {
     self.fabric = fabric
     self.isFurnitureTip = isFurnitureTip
     self.instructions = instructions
+    
+    struct GuideModel: Identifiable {
+        let id = UUID()
+        let title: String
+        let steps: [String]
+    }
   }
 }

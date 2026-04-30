@@ -15,7 +15,7 @@ struct FlekkGuideApp: App {
     let config = ModelConfiguration(url: URL.documentsDirectory.appending(path: "FlekkGuide.store"))
     
     do {
-      container = try ModelContainer(for: Fabric.self, Stain.self, Guide.self, configurations: config)
+      container = try ModelContainer(for: Fabric.self, Stain.self, Guide.self, WashingGuide.self, configurations: config)
       
       let context = container.mainContext
       let count = try context.fetchCount(FetchDescriptor<Stain>())
