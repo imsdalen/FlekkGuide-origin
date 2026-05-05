@@ -1,9 +1,3 @@
-//
-//  HomeView.swift
-//  FlekkGuide
-//
-
-
 import SwiftUI
 
 struct HomeView: View {
@@ -12,24 +6,27 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
-                Color(.systemBackground).ignoresSafeArea()
                 
-                VStack(spacing: 0) {
-                    VStack {
-                        Text("Flekk")
-                            .font(.system(size: 42, weight: .bold, design: .rounded))
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 35)
-                    .padding(.bottom, 75)
+                Color("AppBackground")
+                    .ignoresSafeArea()
+                
+                VStack {
+                    Image("flekk")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 10)
+                        .padding(.bottom, 20)
                     
                     VStack(spacing: 16) {
+                        
                         NavigationLink(destination: StainGuideView()) {
                             HomeCardView(
                                 title: "Flekkguide",
                                 subtitle: "Finn riktig behandling for flekken din",
                                 icon: "drop.triangle.fill",
-                                color: Color(.label)
+                                color: Color("AppText")
                             )
                         }
                         
@@ -38,7 +35,7 @@ struct HomeView: View {
                                 title: "Vasketips",
                                 subtitle: "Generelle vasketips til hjemmet",
                                 icon: "bubbles.and.sparkles",
-                                color: Color(.label)
+                                color: Color("AppText")
                             )
                         }
                     }
@@ -48,7 +45,7 @@ struct HomeView: View {
                     
                     Text("En ide av TeppeRent")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(Color("AppText"))
                         .padding(.bottom, 24)
                 }
             }
@@ -56,7 +53,7 @@ struct HomeView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(destination: SettingView()) {
                         Image(systemName: "gearshape")
-                            .foregroundStyle(.primary)
+                            .foregroundColor(Color("AppText")) 
                     }
                 }
             }

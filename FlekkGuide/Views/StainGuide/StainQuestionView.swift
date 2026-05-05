@@ -1,8 +1,3 @@
-//
-//  StainQuestionView.swift
-//  FlekkGuide
-//
-
 import SwiftUI
 import SwiftData
 
@@ -35,18 +30,22 @@ struct StainQuestionView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 32) {
                 
+                // MARK: STEP 1
                 if step == 1 {
-                    // Spørsmål 1
                     VStack(alignment: .leading, spacing: 16) {
+                        
                         Text("Spørsmål 1 av 2")
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.secondary)
                         
                         Text("Hva har du sølt på?")
                             .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .foregroundColor(Color("AppText"))
                         
                         VStack(spacing: 12) {
+                            
                             let isClothing = isFurniture == false
+                            
                             Button {
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                     isFurniture = false
@@ -57,25 +56,28 @@ struct StainQuestionView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text("Plagg eller tekstil")
                                             .font(.system(size: 16, weight: .semibold))
-                                            .foregroundStyle(isClothing ? .white : .primary)
+                                            .foregroundColor(isClothing ? .white : Color("AppText"))
+                                        
                                         Text("T-skjorte, duk, sengetøy...")
                                             .font(.system(size: 13))
-                                            .foregroundStyle(isClothing ? .white.opacity(0.7) : .secondary)
+                                            .foregroundColor(isClothing ? .white.opacity(0.7) : Color("AppText").opacity(0.6))
                                     }
+                                    
                                     Spacer()
+                                    
                                     if isClothing {
                                         Image(systemName: "checkmark")
-                                            .font(.system(size: 14, weight: .semibold))
-                                            .foregroundStyle(.white)
+                                            .foregroundColor(.white)
                                     }
                                 }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 14)
-                                .background(isClothing ? Color(.label) : Color(.secondarySystemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                .padding(16)
+                                .background(isClothing ? Color("AppText") : Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
                             }
                             
                             let isFurnitureSelected = isFurniture == true
+                            
                             Button {
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                     isFurniture = true
@@ -86,102 +88,102 @@ struct StainQuestionView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         Text("Møbel eller teppe")
                                             .font(.system(size: 16, weight: .semibold))
-                                            .foregroundStyle(isFurnitureSelected ? .white : .primary)
+                                            .foregroundColor(isFurnitureSelected ? .white : Color("AppText"))
+                                        
                                         Text("Sofa, teppe, pute...")
                                             .font(.system(size: 13))
-                                            .foregroundStyle(isFurnitureSelected ? .white.opacity(0.7) : .secondary)
+                                            .foregroundColor(isFurnitureSelected ? .white.opacity(0.7) : Color("AppText").opacity(0.6))
                                     }
+                                    
                                     Spacer()
+                                    
                                     if isFurnitureSelected {
                                         Image(systemName: "checkmark")
-                                            .font(.system(size: 14, weight: .semibold))
-                                            .foregroundStyle(.white)
+                                            .foregroundColor(.white)
                                     }
                                 }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 14)
-                                .background(isFurnitureSelected ? Color(.label) : Color(.secondarySystemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                .padding(16)
+                                .background(isFurnitureSelected ? Color("AppText") : Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
                             }
                         }
                     }
                     
                     if isFurniture != nil {
                         ButtonView(title: "Neste") {
-                            withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                            withAnimation {
                                 step = 2
                             }
                         }
-                        .transition(.opacity)
                     }
                 }
                 
+                // MARK: STEP 2
                 if step == 2 {
-                    // Spørsmål 2
                     VStack(alignment: .leading, spacing: 16) {
+                        
                         Text("Spørsmål 2 av 2")
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.secondary)
                         
                         Text("Hvilket stoff er det?")
                             .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .foregroundColor(Color("AppText"))
                         
                         VStack(spacing: 12) {
                             ForEach(relevantFabrics) { fabric in
                                 let isSelected = selectedFabric?.name == fabric.name
                                 
                                 Button {
-                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                    withAnimation {
                                         selectedFabric = fabric
                                     }
                                 } label: {
                                     HStack {
                                         Text(fabric.name)
-                                            .font(.system(size: 16, weight: .semibold))
-                                            .foregroundStyle(isSelected ? .white : .primary)
+                                            .foregroundColor(isSelected ? .white : Color("AppText"))
+                                        
                                         Spacer()
+                                        
                                         if isSelected {
                                             Image(systemName: "checkmark")
-                                                .font(.system(size: 14, weight: .semibold))
-                                                .foregroundStyle(.white)
+                                                .foregroundColor(.white)
                                         }
                                     }
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 14)
-                                    .background(isSelected ? Color(.label) : Color(.secondarySystemBackground))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                    .padding(16)
+                                    .background(isSelected ? Color("AppText") : Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
                                 }
                             }
                         }
                     }
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
                     
-                  // Knapper
-                  HStack(spacing: 12) {
-                      ButtonView(title: "Forrige", style: .secondary) {
-                          withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                              step = 1
-                          }
-                      }
-                      
-                      if let guide = matchingGuide {
-                          NavigationLink(destination: StainDetailView(guide: guide)) {
-                              Text("Se flekkguide")
-                                  .font(.system(size: 17, weight: .semibold))
-                                  .foregroundStyle(Color(.systemBackground))
-                                  .frame(maxWidth: .infinity)
-                                  .padding(.vertical, 16)
-                                  .background(Color(.label))
-                                  .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                          }
-                          .transition(.opacity)
-                      }
-                  }
+                    // MARK: BUTTONS
+                    HStack(spacing: 12) {
+                        
+                        ButtonView(title: "Forrige", style: .secondary) {
+                            step = 1
+                        }
+                        
+                        if let guide = matchingGuide {
+                            NavigationLink(destination: StainDetailView(guide: guide)) {
+                                Text("Se flekkguide")
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 16)
+                                    .background(Color("AppText"))
+                                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                            }
+                        }
+                    }
                 }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 24)
         }
+        .background(Color("AppBackground"))
         .navigationTitle(stain.name)
         .navigationBarTitleDisplayMode(.large)
     }

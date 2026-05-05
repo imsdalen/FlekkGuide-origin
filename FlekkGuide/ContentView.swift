@@ -11,6 +11,14 @@ struct ContentView: View {
     @Query private var stains: [Stain]
   
     var body: some View {
-     
-      }
+        ZStack {
+            // 🔹 Bakgrunn (hele appen)
+            Color("AppBackground")
+                .ignoresSafeArea()
+            
+            // 🔹 Din startview
+            HomeView()
+                .foregroundColor(Color("AppText"))
+        }
+    }
 }

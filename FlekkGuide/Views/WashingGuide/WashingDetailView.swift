@@ -18,7 +18,6 @@ struct WashingDetailView: View {
                             .font(.headline)
                         
                         Text(tip)
-                            .foregroundColor(.gray)
                     }
                     
                     Divider()
@@ -26,8 +25,9 @@ struct WashingDetailView: View {
             }
             .padding()
         }
+        .background(Color("AppBackground"))
+        .foregroundColor(Color("AppText"))
         .navigationTitle(guide.title)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-

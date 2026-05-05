@@ -12,19 +12,19 @@ func startData(context: ModelContext) {
   let linen = Fabric(name: "Lin", isFurnitureFabric: false)
   let polyester = Fabric(name: "Polyester", isFurnitureFabric: true)
 
-  let redwine = Stain(name: "Rødvin")
-  let berries = Stain(name: "Bær")
-  let coffeeOrTea = Stain(name: "Kaffe eller te")
-  let blood = Stain(name: "Blod")
-  let fat = Stain(name: "Fett")
-  let oil = Stain(name: "Olje")
-  let tomato = Stain(name: "Tomat")
-  let soya = Stain(name: "Soya")
-  let toothpaste = Stain(name: "Tannkrem")
-  let greenery = Stain(name: "Grønske")
+  let redwine = Stain(name: "Rødvin", imageName: "vin")
+  let berries = Stain(name: "Bær", imageName: "baer")
+  let coffeeOrTea = Stain(name: "Kaffe eller te", imageName: "kaffe")
+  let blood = Stain(name: "Blod", imageName: "blod")
+  let fatAndOil = Stain(name: "Fett og olje", imageName: "fett")
+  let sunscreen = Stain(name: "Solkrem",  imageName: "solkrem")
+  let tomato = Stain(name: "Tomat", imageName: "tomat" )
+  let soya = Stain(name: "Soya", imageName: "soya")
+  let toothpaste = Stain(name: "Tannkrem", imageName: "tannkrem" )
+  let greenery = Stain(name: "Grønske", imageName: "gronske")
   
   let fabrics = [cotton, silk, wool, linen, polyester]
-  let stains = [redwine, berries, coffeeOrTea, blood, fat, oil, tomato, soya, toothpaste, greenery]
+  let stains = [redwine, berries, coffeeOrTea, blood, fatAndOil, sunscreen, tomato, soya, toothpaste, greenery]
   
   for stain in stains {
     for fabric in fabrics {

@@ -5,10 +5,10 @@ struct WashingGuideView: View {
     
     @Query var guides: [WashingGuide]
     
-  let columns = [
-      GridItem(.flexible(), spacing: 16),
-      GridItem(.flexible(), spacing: 16)
-  ]
+    let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
     
     var body: some View {
         ScrollView {
@@ -23,6 +23,8 @@ struct WashingGuideView: View {
             .padding(.horizontal, 16)
             .padding(.top, 10)
         }
+        .background(Color("AppBackground"))
+        .foregroundColor(Color("AppText"))    
         .navigationTitle("Vasketips")
         .navigationBarTitleDisplayMode(.large)
     }
