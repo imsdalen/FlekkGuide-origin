@@ -1,27 +1,45 @@
 import SwiftUI
 
 struct HomeView: View {
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    
+        
     var body: some View {
+        
         NavigationStack {
-            ZStack(alignment: .top) {
+            
+            ZStack {
                 
+                // BAKGRUNN
                 Color("AppBackground")
                     .ignoresSafeArea()
                 
+                
+                // BØLGER
+                BackgroundWaves()
+                
+                
+                // INNHOLD
                 VStack {
+                    
                     Image("flekk")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 200)
+                        .frame(height: 260)
                         .frame(maxWidth: .infinity)
-                        .padding(.top, 10)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, -40)
+                        .padding(.top, -40)
+                    
+                    
+                    // Undertittel
+                    Text("Smarte tips for klær, møbler og hjem")
+                        .font(.subheadline)
+                        .foregroundStyle(Color("AppText").opacity(0.65))
+                        .padding(.bottom, 15)
+                    
                     
                     VStack(spacing: 16) {
                         
                         NavigationLink(destination: StainGuideView()) {
+                            
                             HomeCardView(
                                 title: "Flekkguide",
                                 subtitle: "Finn riktig behandling for flekken din",
@@ -30,7 +48,9 @@ struct HomeView: View {
                             )
                         }
                         
+                        
                         NavigationLink(destination: WashingGuideView()) {
+                            
                             HomeCardView(
                                 title: "Vasketips",
                                 subtitle: "Generelle vasketips til hjemmet",
@@ -41,23 +61,27 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     
+                    
                     Spacer()
                     
-                    Text("En ide av TeppeRent")
+                    
+                    Text("©TeppeRent")
                         .font(.footnote)
-                        .foregroundColor(Color("AppText"))
-                        .padding(.bottom, 24)
+                        .foregroundStyle(Color("AppText").opacity(0.65))
+                        .padding(.bottom, 15)
                 }
             }
             .toolbar {
+                
                 ToolbarItem(placement: .topBarTrailing) {
+                    
                     NavigationLink(destination: SettingView()) {
+                        
                         Image(systemName: "gearshape")
-                            .foregroundColor(Color("AppText")) 
+                            .foregroundStyle(Color("AppText"))
                     }
                 }
             }
         }
-        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }

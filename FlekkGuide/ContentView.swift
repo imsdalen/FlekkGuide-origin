@@ -12,11 +12,9 @@ struct ContentView: View {
   
     var body: some View {
         ZStack {
-            // 🔹 Bakgrunn (hele appen)
             Color("AppBackground")
                 .ignoresSafeArea()
             
-            // 🔹 Din startview
             HomeView()
                 .foregroundColor(Color("AppText"))
         }

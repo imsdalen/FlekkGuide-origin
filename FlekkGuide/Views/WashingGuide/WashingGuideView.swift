@@ -3,29 +3,51 @@ import SwiftData
 
 struct WashingGuideView: View {
     
-    @Query var guides: [WashingGuide]
+    @Query var guides: [WashingModel]
     
-    let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16)
-    ]
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 16) {
-                
-                ForEach(guides) { guide in
-                    NavigationLink(destination: WashingDetailView(guide: guide)) {
-                        WashingCardView(title: guide.title)
-                    }
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 10)
-        }
-        .background(Color("AppBackground"))
-        .foregroundColor(Color("AppText"))    
-        .navigationTitle("Vasketips")
-        .navigationBarTitleDisplayMode(.large)
-    }
+  var body: some View {
+      
+      ZStack {
+          
+          // BAKGRUNN
+          Color("AppBackground")
+              .ignoresSafeArea()
+          
+          
+          // BØLGER
+          BackgroundWaves()
+          
+          
+          // INNHOLD
+          ScrollView {
+              
+              LazyVStack(spacing: 16) {
+                  
+                  ForEach(guides) { guide in
+                      
+                      NavigationLink(destination: WashingDetailView(guide: guide)) {
+                          WashingCardView(title: guide.title)
+                      }
+                  }
+              }
+              .padding(.horizontal, 16)
+              .padding(.top, 10)
+              .padding(.bottom, 40)
+          }
+      }
+      .foregroundColor(Color("AppText"))
+      .navigationTitle("Vasketips")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+          
+          ToolbarItem(placement: .topBarTrailing) {
+              
+              NavigationLink(destination: SettingView()) {
+                  
+                  Image(systemName: "gearshape")
+                      .foregroundStyle(Color("AppText"))
+              }
+          }
+      }
+  }
 }

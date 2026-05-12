@@ -36,6 +36,12 @@ struct HomeCardView: View {
         .frame(maxWidth: .infinity, minHeight: 160, alignment: .leading)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .shadow(
+            color: Color("AppText").opacity(0.08),
+            radius: 20,
+            x: 0,
+            y: 12
+        )
         .scaleEffect(isPressed ? 0.97 : 1.0)
         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
         .onLongPressGesture(minimumDuration: .infinity, pressing: { pressing in
@@ -44,6 +50,3 @@ struct HomeCardView: View {
     }
 }
 
-#Preview {
-  HomeCardView(title: "Title", subtitle: "Subtitle", icon: "house", color: .red)
-}

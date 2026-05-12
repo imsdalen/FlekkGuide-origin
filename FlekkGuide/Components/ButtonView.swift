@@ -20,11 +20,16 @@ struct ButtonView: View {
         Button(action: action) {
             Text(title)
                 .font(.system(size: 17, weight: .semibold))
-                .foregroundStyle(style == .primary ? Color(.systemBackground) : .primary)
+                .foregroundColor(style == .primary ? .white : Color("AppText"))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(style == .primary ? Color(.label) : Color(.secondarySystemBackground))
+                .background(
+                    style == .primary
+                    ? Color("AppText")        
+                    : Color.white
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .shadow(color: .black.opacity(0.08), radius: 6, y: 3)
         }
     }
 }
