@@ -1,8 +1,3 @@
-//
-//  FlekkGuideApp.swift
-//  FlekkGuide
-//
-
 import SwiftUI
 import SwiftData
 
@@ -14,32 +9,56 @@ struct FlekkGuideApp: App {
   let container: ModelContainer
   
   init() {
-    let config = ModelConfiguration(url: URL.documentsDirectory.appending(path: "FlekkGuide.store"))
     
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithTransparentBackground()
+    
+    appearance.titleTextAttributes = [
+      .foregroundColor: UIColor(named: "AppText")!
+    ]
+    
+    appearance.largeTitleTextAttributes = [
+      .foregroundColor: UIColor(named: "AppText")!
+    ]
+    
+    UINavigationBar.appearance().standardAppearance = appearance
+    UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    UINavigationBar.appearance().tintColor = UIColor(named: "AppText")
+    
+    
+    // 🔧 DATABASE
+    let config = ModelConfiguration()
+      
     do {
-      container = try ModelContainer(for: Fabric.self, Stain.self, Guide.self, WashingGuide.self, configurations: config)
+      container = try ModelContainer(
+        for: Fabric.self,
+        Stain.self,
+        Guide.self,
+        WashingModel.self,
+        configurations: config
+      )
       
       let context = container.mainContext
       let stainCount = try context.fetchCount(FetchDescriptor<Stain>())
-      let washingCount = try context.fetchCount(FetchDescriptor<WashingGuide>())
+      let washingCount = try context.fetchCount(FetchDescriptor<WashingModel>())
 
       if stainCount == 0 || washingCount == 0 {
-          startData(context: context)
+        startData(context: context)
       }
-    }
-    catch {
+      
+    } catch {
       fatalError("Feil ved åpning av database: \(error)")
     }
   }
   
-    var body: some Scene {
-        WindowGroup {
-          if hasSeenOnboarding {
-            HomeView()
-          } else {
-            OnboardingView()
-          }
-        }
-        .modelContainer(container)
+  var body: some Scene {
+    WindowGroup {
+      if hasSeenOnboarding {
+        HomeView()
+      } else {
+        OnboardingView()
+      }
     }
+    .modelContainer(container)
+  }
 }
